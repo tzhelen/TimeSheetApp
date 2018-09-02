@@ -1,0 +1,9 @@
+1001|Sam Smith|10.00|2 Military Road, Sydney 2000
+1002|Emily James|10.00|23 John Street , Lidcombe 2141
+1003|Alex Harding|15.00|12 Kerrs Road, Lidcombe 2141
+1004|John Smith|10.00|18 Albert Street, Strathfied 2134
+1005|Tin Zar|10|test
+106|Lee Week|2|Queen Stret
+1|test last|70|test
+2|first last|20|test
+2002|Lee Weeks|10|12 Bell Stree, Sydney 2000
