@@ -2,3 +2,4 @@ C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\
 C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\bin\Release\TimeSheetApp.pdb
 C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Release\TimeSheetApp.exe
 C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Release\TimeSheetApp.pdb
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Release\TimeSheetApp.csprojResolveAssemblyReference.cache

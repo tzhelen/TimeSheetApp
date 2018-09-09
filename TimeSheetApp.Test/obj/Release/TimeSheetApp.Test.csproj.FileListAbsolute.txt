@@ -1,0 +1,14 @@
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\NUnit3.TestAdapter.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\NUnit3.TestAdapter.pdb
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\nunit.engine.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\nunit.engine.api.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\Mono.Cecil.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\TimeSheetApp.Test.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\TimeSheetApp.Test.pdb
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\nunit.framework.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\TimeSheetApp.exe
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\TimeSheetApp.pdb
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\bin\Release\nunit.framework.xml
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\obj\Release\TimeSheetApp.Test.csprojResolveAssemblyReference.cache
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\obj\Release\TimeSheetApp.Test.dll
+C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp.Test\obj\Release\TimeSheetApp.Test.pdb

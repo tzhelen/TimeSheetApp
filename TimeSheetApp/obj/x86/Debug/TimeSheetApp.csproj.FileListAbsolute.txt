@@ -1,4 +1,5 @@
-C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\bin\Debug\TimeSheetApp.exe
-C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\bin\Debug\TimeSheetApp.pdb
-C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.exe
-C:\Users\tinzar\documents\visual studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.pdb
+C:\Users\tinzar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\bin\Debug\TimeSheetApp.exe
+C:\Users\tinzar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\bin\Debug\TimeSheetApp.pdb
+C:\Users\tinzar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.csproj.CoreCompileInputs.cache
+C:\Users\tinzar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.exe
+C:\Users\tinzar\Documents\Visual Studio 2010\Projects\TimeSheetApp\TimeSheetApp\obj\x86\Debug\TimeSheetApp.pdb

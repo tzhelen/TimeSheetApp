@@ -6,7 +6,7 @@ using System.Text;
 namespace TimeSheetApp
 {
    
-    static class Payroll
+   public static class Payroll
     {
         private const double MaxHourlyRate = 50.00;
 
@@ -16,18 +16,23 @@ namespace TimeSheetApp
         /// <param name="date">Date</param>
         /// <param name="baseRate">Base Rate</param>
         /// <returns>calculated hourly rate </returns>
-        private static double GetRate(DateTime date, double baseRate)
+        public  static double GetRate(DateTime date, double baseRate)
         {
             double hourlyRate = baseRate;
             DayOfWeek day = date.DayOfWeek;
 
-            if (day == DayOfWeek.Saturday)
+
+            if (day == DayOfWeek.Saturday) // For Saturday 
             {
                 hourlyRate = ((baseRate * 1.5) < MaxHourlyRate) ? baseRate * 1.5 : MaxHourlyRate;
             }
-            else if (day == DayOfWeek.Sunday)
+            else if (day == DayOfWeek.Sunday) // For Sunday
             {
                 hourlyRate = ((baseRate * 2.0) < MaxHourlyRate) ? baseRate * 2.0 : MaxHourlyRate;
+            }
+            else
+            { // for week day
+                hourlyRate = (baseRate > MaxHourlyRate) ? MaxHourlyRate : baseRate;
             }
 
             return hourlyRate;

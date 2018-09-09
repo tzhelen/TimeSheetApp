@@ -10,6 +10,9 @@ namespace TimeSheetApp
     {
         private static List<TimeSheet> _timesheets = new List<TimeSheet>();
         private static List<Employee> _employees = new List<Employee>();
+        private static Employee emp;
+        private static TimeSheet ts;
+             
 
         private static string _currentDirectory = Directory.GetCurrentDirectory();
         private static string _timesheetPath = System.IO.Path.Combine(_currentDirectory, "TimeSheet.txt");
@@ -18,11 +21,14 @@ namespace TimeSheetApp
         static void Main(string[] args)
         {
             Console.SetWindowSize(120, 30);
+            int userSelect = 12; //dummy          
+            emp = new Employee();
+            ts = new TimeSheet();
+
             ReadExistingTimeSheets(); // Read existing time sheet records from text file
             ReadExistingEmpRecords(); // Read existing employees records from text file
 
-            int userSelect = 12; //dummy          
-
+           
             Console.WriteLine("TIME SHEET APPLICATION ");
             Console.WriteLine("=================================================================================");
             while (userSelect != 0)
@@ -39,7 +45,6 @@ namespace TimeSheetApp
                 Console.WriteLine("=================================================================================");
 
                 userSelect = Convert.ToInt32(Console.ReadLine());
-
              
 
                 switch (userSelect)
@@ -103,7 +108,7 @@ namespace TimeSheetApp
             Console.Write("Please enter Last Name : ");
             string lastName = Console.ReadLine();
           
-            Console.Write("Please enter Hourly Rate [ number only ] : ");
+            Console.Write("Please enter Hourly Rate [ number only ]  : ");
             double rate = Util.ReadDouble("Invalid value. Please try again");
 
             Console.Write("Please enter Address : ");
@@ -111,13 +116,21 @@ namespace TimeSheetApp
             
              string newRecord = id +"|"+firstName+" "+lastName+"|"+rate+"|"+address;
 
-            Employee newEmployee = new Employee(id,firstName,lastName,rate,address);
-            _employees.Add(newEmployee);
-            SaveEmployeeRecord(newRecord, _employeesPath);
-
-            Console.WriteLine("Successfully created a new employee with Employee Id : " + id);
-            Console.WriteLine("=================================================================================");
+            Employee newEmployee = emp.CreateEmployee(id, firstName, lastName, rate, address);
+           
+            if (newEmployee != null)
+            {
+                _employees.Add(newEmployee);
+                SaveEmployeeRecord(newRecord, _employeesPath);
+                Console.WriteLine("Successfully created a new employee with Employee Id : " + id);
+                Console.WriteLine("=================================================================================");
+            }
+            else
+            {
+                Console.WriteLine("Validation failed. Please try again..");
+            }
         }
+
 
         /// <summary>
         /// Method for entering time sheet record for selected employee 
@@ -139,12 +152,18 @@ namespace TimeSheetApp
                  Console.Write("Please enter worked hours [ number only ] : ");
                  double workedHour = Util.ReadDouble("Invalid value. Please try again ");
 
-                 emp.AddTimeSheet(emp.EmployeeID, _date, project, workedHour);
+                if (emp.AddTimeSheet(emp.EmployeeID, _date, project, workedHour))
+                {
 
-                 string newRecord = emp.EmployeeID + "|" + _date.ToShortDateString() + "|" + project + "|" + workedHour;
-                 SaveTimeSheetRecord(newRecord, _timesheetPath);
-                 Console.WriteLine("Successfully created a time sheet record for employee with Employee Id : " + emp.EmployeeID);
-                 Console.WriteLine("=================================================================================");
+                    string newRecord = emp.EmployeeID + "|" + _date.ToShortDateString() + "|" + project + "|" + workedHour;
+                    SaveTimeSheetRecord(newRecord, _timesheetPath);
+                    Console.WriteLine("Successfully created a time sheet record for employee with Employee Id : " + emp.EmployeeID);
+                    Console.WriteLine("=================================================================================");
+                }
+                else
+                {
+                    Console.WriteLine("Validation failed. Please try again..");
+                }
              }
              else
              {
@@ -174,7 +193,10 @@ namespace TimeSheetApp
                  Payroll.ProcessPayroll(emp, startDate, endDate, out totalWage, out totalHours);
 
                  Console.WriteLine("Successfully calculated Total Worked Hours and Total wages for employee with Employee Id : " + emp.EmployeeID);
-                 Console.WriteLine("Employee ID {0},  Total worked hours : {1}  :  Total wages : {2} ", emp.EmployeeID, totalHours, totalWage);
+                 Console.WriteLine("For Saturday , Time and a half of base hourly rate.");
+                 Console.WriteLine("For Sunday , Double time of base hourly rate.");
+                 Console.WriteLine("Maximum hourly rate is capped at $50 an hour.");
+                Console.WriteLine("Employee ID {0},  Total worked hours : {1}  :  Total wages : {2} ", emp.EmployeeID, totalHours, totalWage);
                  Console.WriteLine("=================================================================================");
              }              
              else
@@ -325,9 +347,13 @@ namespace TimeSheetApp
 
 
 
-                         Employee emp = new Employee(employeeID,firstName,lastName,baseRate,address);
-                         emp.AddTimeSheet(ReadTimeSheetByEmployeeId(emp.EmployeeID));
-                         _employees.Add(emp);
+                         Employee newEmployee = emp.CreateEmployee(employeeID,firstName,lastName,baseRate,address);
+                         if (newEmployee != null)
+                         {
+                            List<TimeSheet> records =  ReadTimeSheetByEmployeeId(newEmployee.EmployeeID);
+                            if(records.Count > 0 )  newEmployee.AddTimeSheet(records);
+                            _employees.Add(newEmployee);
+                         }
 
 
 
@@ -359,7 +385,7 @@ namespace TimeSheetApp
                  // Read file line by line.
                  using (System.IO.StreamReader file = new System.IO.StreamReader(_timesheetPath))
                  {
-                     _timesheets.Clear();
+                     //_timesheets.Clear();
 
                      while ((line = file.ReadLine()) != null)
                      {
@@ -411,8 +437,8 @@ namespace TimeSheetApp
                              line = line.Substring(index, line.Length - index);
                              line = line.Trim();
                          }
-                         TimeSheet record = new TimeSheet(employeeID, date, project, workedHour);
-                         _timesheets.Add(record);
+                         TimeSheet record = ts.CreateTimeSheet(employeeID, date, project, workedHour);
+                         if( record != null ) _timesheets.Add(record);
 
                      }
                  }

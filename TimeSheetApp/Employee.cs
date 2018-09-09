@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TimeSheetApp
 {
-    class Employee : IPerson
+    public class Employee : IPerson
     {
 
 
@@ -16,6 +16,36 @@ namespace TimeSheetApp
         private double _baseRate;
 
         private List<TimeSheet> _timeSheetEntries;
+        private TimeSheet _timesheet  = new TimeSheet();
+
+        /// <summary>
+        /// Employee Obj Constructor
+        /// </summary>
+        public Employee()
+        {
+        }
+
+        /// <summary>
+        /// Method to create employee obj
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="baseRate"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public Employee CreateEmployee(string id, string firstname, string lastname, double baseRate, string address)
+        {
+
+            if (!string.IsNullOrWhiteSpace(id) && !string.IsNullOrWhiteSpace(firstname) && !string.IsNullOrWhiteSpace(lastname) && (Math.Sign(baseRate) == 1) && !string.IsNullOrWhiteSpace(address))
+            {
+               
+                Employee newEmployee = new Employee(id, firstname, lastname, baseRate, address);                   
+                return newEmployee;
+                
+            }
+            return null;
+        }
 
         /// <summary>
         /// Employee Obj Constructor
@@ -33,7 +63,7 @@ namespace TimeSheetApp
             _baseRate = baseRate;
             _employeeID = id;
             _timeSheetEntries = new List<TimeSheet>();
-        }      
+        }
 
         /// <summary>
         /// Method to Add Time Sheet record
@@ -42,10 +72,17 @@ namespace TimeSheetApp
         /// <param name="date"></param>
         /// <param name="project"></param>
         /// <param name="Hours"></param>
-        public void AddTimeSheet(string employeeId, DateTime date, string project, double Hours)
+        public bool AddTimeSheet(string employeeId, DateTime date, string project, double Hours)
         {
-            TimeSheet ts = new TimeSheet(employeeId, date, project, Hours);
-            _timeSheetEntries.Add(ts);
+
+            TimeSheet record = _timesheet.CreateTimeSheet(employeeId, date, project, Hours);
+            if (record != null)
+            {
+                 _timeSheetEntries.Add(record);
+                return true;
+            }
+            return false;
+
         }
 
         /// <summary>
